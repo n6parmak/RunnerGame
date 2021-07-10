@@ -23,9 +23,51 @@ public class PlayerRunnerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.touchCount > 0){
-            Touch touch  = Input.touches[0];
-            print(touch.deltaPosition.Normalized);
+        
+        if (Input.GetKeyDown("right"))
+        {
+            switch(_lane){
+                case Lane.first:
+                transform.position+= new Vector3(2,0,0);
+                _lane = Lane.second;
+                print("2");
+                break;
+
+                case Lane.second:
+                transform.position+= new Vector3(2,0,0);
+                _lane = Lane.third;
+                print("3");
+                break;
+
+                case Lane.third:
+                print("3");
+                break;
+
+            }
+
+        }
+
+        if (Input.GetKeyDown("left"))
+        {
+            switch(_lane){
+                case Lane.first:
+                print("1");
+                break;
+
+                case Lane.second:
+                transform.position-= new Vector3(2,0,0);
+                _lane = Lane.first;
+                print("1");
+                break;
+
+                case Lane.third:
+                transform.position-= new Vector3(2,0,0);
+                _lane = Lane.second;
+                print("2");
+                break;
+
+            }
+
         }
     }
 }
